@@ -1,0 +1,25 @@
+<?php
+
+use PHPUnit\Framework\TestCase;
+
+class UserTest extends TestCase
+{
+    public function testReturnsFullName()
+    {
+        require 'User.php';
+
+        $user = new User();
+
+        $user->firstName = 'Ihor';
+        $user->lastName = 'Po';
+
+        $this->assertEquals('Ihor Po', $user->getFullName());
+    }
+
+    public function testFullNameIsEmptyByDefault()
+    {
+        $user = new User();
+
+        $this->assertEquals('', $user->getFullName());
+    }
+}
