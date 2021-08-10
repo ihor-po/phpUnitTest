@@ -17,6 +17,10 @@ class Mailer
      */
     public function sendMessage(string $email, string $message)
     {
+        if (empty($message)) {
+            throw new Exception();
+        }
+
         sleep(3);
 
         echo "send '$message' to '$email'";
