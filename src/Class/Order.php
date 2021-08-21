@@ -7,13 +7,26 @@
  */
 class Order
 {
+    /**
+     * Quantity
+     *
+     * @var int
+     */
+    private $quantity;
+
+    /**
+     * Unit price
+     *
+     * @var float
+     */
+    private $unitPrice;
 
     /**
      * Amount
      *
-     * @var integer
+     * @var float
      */
-    public $amount = 0;
+    private $amount = 0;
 
     /**
      * Payment gateway dependency
@@ -29,6 +42,21 @@ class Order
 
     public function process()
     {
-        return $this->gateway->charge($this->amount);
+        return $this->gateway->charge($this->getAmount());
+    }
+
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    public function setUnitPrice(float $unitPrice): void
+    {
+        $this->unitPrice = $unitPrice;
+    }
+
+    public function getAmount(): float
+    {
+        return $this->quantity * $this->unitPrice;
     }
 }

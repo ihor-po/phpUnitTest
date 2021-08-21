@@ -22,7 +22,8 @@ class OrderTest extends TestCase
 
         $order = new Order($gateway);
 
-        $order->amount = 100;
+        $order->setQuantity(1);
+        $order->setUnitPrice(100);
 
         $this->assertTrue($order->process());
     }
@@ -37,8 +38,9 @@ class OrderTest extends TestCase
                 ->andReturn(true);
 
         $order = new Order($gateway);
-
-        $order->amount = 100;
+        
+        $order->setQuantity(1);
+        $order->setUnitPrice(100);
 
         $this->assertTrue($order->process());
     }
